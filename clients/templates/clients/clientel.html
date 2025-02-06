@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<body>
+    <h1 style="background-color:black; color:white; text-align: center;">Clientel</h1>
+        {% if client_list %}
+            <ul style="list-style-position:center">
+                {% for client in client_list %}
+                    <li>{{client}}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p style="text-align:center;"><strong> --- No clients available. --- </strong></p>
+        {% endif %}
+</body>

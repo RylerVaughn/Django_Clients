@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1 style="background-color:black;color:white;text-align:center;">All Documented Jobs</h1>
+        {% if jobs_list %}
+        <ul>
+            {% for job in jobs_list %}
+                <li>{{job}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p style="text-align:center"> --- No Documented Jobs --- </p>
+        {% endif %}
+    </body>
+</html>
