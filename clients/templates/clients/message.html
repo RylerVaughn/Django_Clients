@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    {% if form %}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+    {% else %}
+    <p> --- Error --- </p>
+    <a href="{% url 'clients:index' %}"><button>Return</button></a>
+    {% endif %}
+</html>

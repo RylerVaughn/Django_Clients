@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Client, Job
-from .ClientForms import client_form, job_form
+from .ClientForms import client_form, job_form, Message_Form
 
 def index(request):
     return render(request, 'clients/index.html')
@@ -31,3 +31,16 @@ def ajob(request):
     else:
         form = job_form()
         return render(request, 'clients/jform.html/', {'form': form})
+    
+def success(request):
+    return render(request, 'clients/success.html/')
+    
+def send_messages(request):
+    if request.method == 'POST':
+        form = Message_Form(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('clients:success')
+    else:
+        form = Message_Form()
+        return render(request, 'clients/message.html/', {'form': form})

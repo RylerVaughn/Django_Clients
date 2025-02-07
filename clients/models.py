@@ -6,6 +6,7 @@ class Client(models.Model):
     name = models.CharField(max_length=150)
     address = models.CharField(max_length=300)
     details = models.TextField()
+    contact = models.CharField(max_length=15, default='NaN')
 
     def __str__(self):
         return f'{self.name}, address: {self.address}, details: {self.details}'
@@ -15,5 +16,7 @@ class Job(models.Model):
     date = models.DateField()
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'Client: {self.client}, payment: {self.price}, Date: {self.date}'
+class Messages(models.Model):
+    message = models.TextField()
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+
